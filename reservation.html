@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Réservation | COLISÉE 56</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header>
+        <div class="container nav-container">
+            <a href="index.html" class="logo">
+                <img src="Colisée-56-logo-blanc.png" alt="Colisée 56 Logo" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+                <span style="display:none; font-family:'Playfair Display'; font-size:1.5rem; color:#fff;">COLISÉE 56</span>
+            </a>
+            <input type="checkbox" id="mobile-menu-check">
+            <label for="mobile-menu-check" class="mobile-toggle">☰</label>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="index.html">Accueil</a></li>
+                    <li><a href="menu.html">Menu</a></li>
+                    <li><a href="about.html">À Propos</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="reservation.html" class="active btn">Réserver</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="section" style="margin-top: 80px; min-height: 80vh; display: flex; align-items: center;">
+        <div class="container">
+            <div class="grid-2">
+                <div class="slide-up">
+                    <h2>Réservez Votre Table</h2>
+                    <p>Pour le déjeuner ou le dîner, assurez-vous de vivre l'expérience Colisée 56. Pour les groupes de plus de 8 personnes, veuillez nous contacter directement.</p>
+                    <div style="margin-top: 2rem; border-left: 2px solid var(--color-primary); padding-left: 1rem;">
+                        <p><strong>Horaires d'ouverture :</strong></p>
+                        <p>Déjeuner : 11h00 - 14h00</p>
+                        <p>Dîner : 18h30 - 23h00</p>
+                    </div>
+                </div>
+
+                <div class="card fade-in delay-1" style="background: rgba(20,20,20,0.9);">
+                    <form action="#" method="POST">
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Votre Nom Complet" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" class="form-control" placeholder="Votre Email" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="tel" class="form-control" placeholder="Numéro de Téléphone" required>
+                        </div>
+                        <div class="grid-2" style="gap: 1rem;">
+                            <div class="form-group">
+                                <input type="date" class="form-control" required>
+                            </div>
+                            <div class="form-group">
+                                <select class="form-control" required>
+                                    <option value="" disabled selected>Heure</option>
+                                    <optgroup label="Déjeuner">
+                                        <option value="11:30">11:30</option>
+                                        <option value="12:00">12:00</option>
+                                        <option value="12:30">12:30</option>
+                                        <option value="13:00">13:00</option>
+                                    </optgroup>
+                                    <optgroup label="Dîner">
+                                        <option value="19:00">19:00</option>
+                                        <option value="19:30">19:30</option>
+                                        <option value="20:00">20:00</option>
+                                        <option value="20:30">20:30</option>
+                                        <option value="21:00">21:00</option>
+                                    </optgroup>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <input type="number" class="form-control" placeholder="Nombre de couverts" min="1" max="8" required>
+                        </div>
+                        <div class="form-group">
+                            <textarea class="form-control" rows="3" placeholder="Message spécial / Allergies"></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-pulse" style="width: 100%;">Confirmer la Réservation</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="copyright"><p>&copy; 2024 Colisée 56.</p></div>
+        </div>
+    </footer>
+
+</body>
+</html>

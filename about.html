@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>À Propos | COLISÉE 56</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header>
+        <div class="container nav-container">
+            <a href="index.html" class="logo">
+                <img src="Colisée-56-logo-blanc.png" alt="Colisée 56 Logo" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+                <span style="display:none; font-family:'Playfair Display'; font-size:1.5rem; color:#fff;">COLISÉE 56</span>
+            </a>
+            <input type="checkbox" id="mobile-menu-check">
+            <label for="mobile-menu-check" class="mobile-toggle">☰</label>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="index.html">Accueil</a></li>
+                    <li><a href="menu.html">Menu</a></li>
+                    <li><a href="about.html" class="active">À Propos</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="reservation.html" class="btn">Réserver</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="section" style="margin-top: 80px;">
+        <div class="container">
+            <div class="grid-2">
+                <div class="slide-up">
+                    <h2>Notre Histoire</h2>
+                    <p>Fondé sur une passion inébranlable pour la gastronomie transalpine, le <strong>COLISÉE 56</strong> est bien plus qu'un restaurant. C'est un pont entre l'effervescence parisienne de la rue du Colisée et la tradition culinaire séculaire de l'Italie.</p>
+                    <p>Notre philosophie repose sur le respect absolu du produit. Nous sourçons nos ingrédients directement auprès de petits producteurs italiens : de la mozzarella de Campanie aux truffes du Piémont.</p>
+                </div>
+                <div class="fade-in delay-1" style="border: 1px solid var(--color-primary); padding: 10px;">
+                    <!-- Placeholder pour image d'ambiance -->
+                    <div style="background-color: #222; height: 300px; display: flex; align-items: center; justify-content: center;">
+                        <span style="color: var(--color-primary); font-style: italic;">[Photo Intérieur Restaurant]</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section section-dark">
+        <div class="container">
+            <h2 class="slide-up">Nos Valeurs</h2>
+            <div class="grid-3">
+                <div class="card slide-up delay-1">
+                    <div class="card-icon">💎</div>
+                    <h3>Qualité</h3>
+                    <p>Aucun compromis sur la fraîcheur. Chaque ingrédient est sélectionné rigoureusement chaque matin.</p>
+                </div>
+                <div class="card slide-up delay-2">
+                    <div class="card-icon">🏛️</div>
+                    <h3>Tradition</h3>
+                    <p>Des recettes transmises de génération en génération, exécutées avec une précision moderne.</p>
+                </div>
+                <div class="card slide-up delay-3">
+                    <div class="card-icon">🤝</div>
+                    <h3>Authenticité</h3>
+                    <p>Une hospitalité chaleureuse, un service attentionné et une atmosphère véritablement italienne.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="section">
+        <div class="container">
+            <h2>Le Chef</h2>
+            <div style="max-width: 800px; margin: 0 auto; text-align: center;">
+                <p class="slide-up">Le Chef <strong>Marco Rossi</strong>, originaire de Bologne, apporte à Paris son savoir-faire unique. Après avoir fait ses armes dans les cuisines étoilées de Milan, il dédie aujourd'hui son art à sublimer les classiques italiens au Colisée 56.</p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="copyright"><p>&copy; 2024 Colisée 56.</p></div>
+        </div>
+    </footer>
+
+</body>
+</html>
