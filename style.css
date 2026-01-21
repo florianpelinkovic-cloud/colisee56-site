@@ -1,94 +1,83 @@
 /* =========================================
-   1. CORE & VARIABLES (L'ADN du site)
+   1. CHARTE GRAPHIQUE (Menu Imprimé)
    ========================================= */
 :root {
-    /* Couleurs */
-    --bg-dark: #080808;           /* Noir quasi absolu */
-    --bg-card: #121212;           /* Gris très sombre pour les cartes */
-    --bg-overlay: rgba(0,0,0,0.85);
-    
-    --text-main: #FFFFFF;         /* Blanc pur (Logo) */
-    --text-muted: #B0B0B0;        /* Gris argenté pour descriptions */
-    
-    --accent-gold: #D4AF37;       /* Or Classique */
-    --accent-gold-dim: #8a7020;   /* Or sombre pour bordures subtiles */
+    /* Couleurs de la charte */
+    --bg-paper: #e8e0cf;          /* Beige Crème (Fond principal) */
+    --text-brown: #50200d;        /* Marron Chocolat (Texte & Titres) */
+    --brown-light: #8a6a58;       /* Marron plus clair pour les détails */
+    --white-soft: #fbf9f5;        /* Blanc cassé pour les cartes/conteneurs */
     
     /* Typographie */
-    --font-title: 'Playfair Display', serif;
-    --font-body: 'Lato', sans-serif;
+    /* Area Normal substitute -> Montserrat (Geometric Sans) */
+    --font-title: 'Montserrat', sans-serif;
+    /* MADE Sunflower substitute -> Cormorant Garamond (Elegant Serif) */
+    --font-body: 'Cormorant Garamond', serif;
     
     /* Dimensions */
-    --header-h: 90px;
-    --container: 1200px;
+    --header-h: 100px;
+    --container: 1100px;
+    --radius: 0px; /* Pas d'arrondis pour un look "Papier imprimé" net */
 }
 
-/* Reset Haute Performance */
+/* Reset */
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
 html {
-    font-size: 16px;
+    font-size: 18px; /* Police un peu plus grande pour le style "Menu" */
     scroll-behavior: smooth;
-    -webkit-font-smoothing: antialiased; /* Rendu texte net sur Mac */
 }
 
 body {
-    background-color: var(--bg-dark);
-    color: var(--text-main);
+    background-color: var(--bg-paper);
+    color: var(--text-brown);
     font-family: var(--font-body);
-    line-height: 1.7;
-    overflow-x: hidden; /* Évite le scroll horizontal accidentel */
+    line-height: 1.6;
+    background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100' height='100' filter='url(%23noise)' opacity='0.05'/%3E%3C/svg%3E");
+    /* Ajout d'un grain subtil pour l'effet papier */
 }
 
 /* =========================================
-   2. TYPOGRAPHIE DE LUXE
+   2. TYPOGRAPHIE
    ========================================= */
-h1, h2, h3 {
+h1, h2, h3, h4, .btn, .nav-links a {
     font-family: var(--font-title);
-    font-weight: 400;
-    color: var(--text-main);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--text-brown);
 }
 
 h1 {
-    font-size: clamp(3rem, 6vw, 5.5rem); /* Taille adaptative */
+    font-size: clamp(2.5rem, 5vw, 4.5rem);
+    font-weight: 700;
     line-height: 1.1;
-    letter-spacing: -1px;
-    margin-bottom: 2rem;
-    text-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    margin-bottom: 1.5rem;
 }
 
 h2 {
-    font-size: 2.5rem;
+    font-size: 2rem;
     text-align: center;
-    margin-bottom: 4rem;
-    position: relative;
-    padding-bottom: 1.5rem;
-    text-transform: uppercase;
-    letter-spacing: 4px;
-    color: var(--accent-gold);
-}
-
-/* La ligne dorée sous les titres */
-h2::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
+    margin-bottom: 3rem;
+    padding-bottom: 1rem;
+    border-bottom: 2px solid var(--text-brown);
+    display: inline-block;
     left: 50%;
+    position: relative;
     transform: translateX(-50%);
-    width: 80px;
-    height: 1px;
-    background: linear-gradient(90deg, transparent, var(--accent-gold), transparent);
 }
 
 h3 {
-    font-size: 1.5rem;
+    font-size: 1.4rem;
+    font-weight: 600;
     margin-bottom: 0.5rem;
     letter-spacing: 1px;
 }
 
 p {
-    color: var(--text-muted);
-    font-weight: 300;
+    font-size: 1.15rem;
+    font-weight: 500;
     margin-bottom: 1.5rem;
+    color: var(--text-brown);
 }
 
 a { 
@@ -98,52 +87,42 @@ a {
 }
 
 /* =========================================
-   3. ÉLÉMENTS D'INTERFACE (Boutons)
+   3. ÉLÉMENTS D'INTERFACE
    ========================================= */
 .btn {
     display: inline-block;
-    padding: 15px 40px;
-    border: 1px solid var(--accent-gold);
-    color: var(--accent-gold);
-    text-transform: uppercase;
-    font-size: 0.8rem;
-    letter-spacing: 3px;
-    position: relative;
-    overflow: hidden;
-    transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+    padding: 18px 45px;
+    border: 2px solid var(--text-brown);
+    color: var(--text-brown);
+    font-weight: 600;
+    font-size: 0.9rem;
     background: transparent;
     cursor: pointer;
-}
-
-.btn::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 0; width: 0%; height: 100%;
-    background: var(--accent-gold);
-    z-index: -1;
-    transition: width 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+    transition: all 0.3s ease;
 }
 
 .btn:hover {
-    color: var(--bg-dark);
-    padding-left: 50px; /* Petit effet de mouvement du texte */
-    padding-right: 30px;
+    background: var(--text-brown);
+    color: var(--bg-paper);
 }
 
-.btn:hover::before { width: 100%; }
+.container {
+    max-width: var(--container);
+    margin: 0 auto;
+    padding: 0 30px;
+}
 
 /* =========================================
-   4. HEADER & NAVIGATION (Glassmorphism)
+   4. HEADER & NAVIGATION
    ========================================= */
 header {
     position: fixed;
     top: 0; left: 0; width: 100%;
     height: var(--header-h);
     z-index: 1000;
-    background: rgba(8, 8, 8, 0.8);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    border-bottom: 1px solid rgba(255,255,255,0.05);
+    background: var(--bg-paper);
+    border-bottom: 1px solid rgba(80, 32, 13, 0.1);
+    transition: all 0.3s ease;
 }
 
 .nav-container {
@@ -157,250 +136,205 @@ header {
 }
 
 .logo img {
-    height: 50px; /* Taille ajustée pour le logo blanc */
+    height: 60px;
     width: auto;
-    display: block;
-    transition: transform 0.3s;
+    /* FILTRE MAGIQUE : Transforme le logo blanc en marron #50200d */
+    filter: brightness(0) saturate(100%) invert(11%) sepia(28%) saturate(1600%) hue-rotate(346deg) brightness(95%) contrast(92%);
 }
-
-.logo:hover img { transform: scale(1.05); }
 
 .nav-links {
     display: flex;
-    gap: 3rem;
+    gap: 2.5rem;
     list-style: none;
     align-items: center;
 }
 
 .nav-links a {
-    font-size: 0.75rem;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    position: relative;
-    color: var(--text-main);
-    opacity: 0.8;
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--text-brown);
 }
 
 .nav-links a:hover, .nav-links a.active {
-    opacity: 1;
-    color: var(--accent-gold);
+    text-decoration: underline;
+    text-underline-offset: 5px;
 }
 
-/* Burger Menu (Hidden Desktop) */
-.mobile-toggle { display: none; cursor: pointer; color: var(--text-main); font-size: 1.5rem; }
+.mobile-toggle { display: none; cursor: pointer; color: var(--text-brown); font-size: 1.8rem; }
 #mobile-check { display: none; }
 
 /* =========================================
-   5. SECTIONS & GRIDS
+   5. SECTIONS
    ========================================= */
-.section {
-    padding: 120px 0;
-    position: relative;
-}
+.section { padding: 100px 0; }
 
-.section-dark {
-    background-color: var(--bg-card);
-    border-top: 1px solid rgba(255,255,255,0.03);
-    border-bottom: 1px solid rgba(255,255,255,0.03);
+.section-alt {
+    background-color: rgba(80, 32, 13, 0.05); /* Marron très très clair */
 }
-
-.container {
-    max-width: var(--container);
-    margin: 0 auto;
-    padding: 0 25px;
-}
-
-.grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
-.grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2.5rem; }
 
 /* =========================================
-   6. HERO SECTION (Parallaxe)
+   6. HERO SECTION
    ========================================= */
 .hero {
-    height: 100vh;
+    height: 90vh;
     display: flex;
     align-items: center;
     justify-content: center;
     text-align: center;
-    background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80');
+    position: relative;
+    padding-top: var(--header-h);
+    /* Image de fond avec filtre sépia pour matcher le beige */
+    background: linear-gradient(rgba(232, 224, 207, 0.6), rgba(232, 224, 207, 0.8)), url('https://images.unsplash.com/photo-1551183053-bf91a1d81141?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80');
     background-size: cover;
     background-position: center;
-    background-attachment: fixed; /* L'effet de profondeur */
-    padding-top: var(--header-h);
 }
 
 .hero-content {
+    border: 2px solid var(--text-brown);
+    padding: 4rem;
+    background: rgba(232, 224, 207, 0.9);
     max-width: 800px;
-    animation: fadeUp 1.2s cubic-bezier(0.23, 1, 0.32, 1) forwards;
 }
 
 /* =========================================
-   7. LE MENU (Design épuré)
+   7. LE MENU (Style Liste Épurée)
    ========================================= */
 .menu-cat-title {
-    font-size: 2rem;
-    color: var(--accent-gold);
+    font-family: var(--font-title);
+    font-size: 2.2rem;
     text-align: center;
     margin: 4rem 0 3rem;
-    font-family: var(--font-title);
-    font-style: italic;
+    color: var(--text-brown);
+    border-bottom: none;
 }
 
 .menu-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 4rem 5rem; /* Gap Vertical / Horizontal */
+    gap: 3rem 5rem;
 }
 
 .menu-item {
-    margin-bottom: 1rem;
-    transition: transform 0.3s ease;
+    margin-bottom: 1.5rem;
+    border-bottom: 1px dashed rgba(80, 32, 13, 0.3);
+    padding-bottom: 1rem;
 }
-
-.menu-item:hover { transform: translateX(5px); }
 
 .item-header {
     display: flex;
     justify-content: space-between;
     align-items: baseline;
-    position: relative;
-    overflow: hidden;
-}
-
-.item-header::after {
-    content: ".......................................................................";
-    position: absolute;
-    bottom: 5px; left: 0; width: 100%;
-    color: rgba(255,255,255,0.1);
-    z-index: 0;
-    letter-spacing: 2px;
 }
 
 .item-name {
     font-family: var(--font-title);
-    font-size: 1.2rem;
-    background: var(--bg-dark); /* Cache les points derrière le nom */
-    padding-right: 15px;
-    z-index: 1;
-    color: var(--text-main);
+    font-weight: 700;
+    font-size: 1.1rem;
 }
-.section-dark .item-name { background: var(--bg-card); } /* Adaptation fond */
 
 .item-price {
-    font-family: var(--font-body);
+    font-family: var(--font-title);
     font-weight: 700;
-    color: var(--accent-gold);
-    background: var(--bg-dark);
-    padding-left: 15px;
-    z-index: 1;
+    font-size: 1.1rem;
 }
-.section-dark .item-price { background: var(--bg-card); }
 
 .item-desc {
-    font-size: 0.9rem;
+    font-family: var(--font-body);
     font-style: italic;
-    margin-top: 0.4rem;
-    color: var(--text-muted);
+    font-size: 1.1rem;
+    margin-top: 0.5rem;
+    color: var(--brown-light);
 }
 
 /* =========================================
-   8. CARDS (Service, Signatures)
+   8. CARTES & GRILLES
    ========================================= */
+.grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; }
+.grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
+
 .card {
-    background: linear-gradient(145deg, #151515, #0a0a0a);
+    background: var(--white-soft);
     padding: 3rem 2rem;
-    border: 1px solid rgba(255,255,255,0.03);
+    border: 1px solid var(--text-brown);
     text-align: center;
-    transition: all 0.4s ease;
+    transition: transform 0.3s;
 }
 
 .card:hover {
-    border-color: var(--accent-gold-dim);
-    transform: translateY(-10px);
-    box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+    transform: translateY(-5px);
+    box-shadow: 10px 10px 0px rgba(80, 32, 13, 0.1);
 }
 
 /* =========================================
-   9. FORMULAIRES
+   9. FORMULAIRES (Style Ligne)
    ========================================= */
-.form-group { margin-bottom: 2rem; position: relative; }
+.form-group { margin-bottom: 1.5rem; }
 
 .form-input {
     width: 100%;
     padding: 15px 0;
     background: transparent;
     border: none;
-    border-bottom: 1px solid rgba(255,255,255,0.2);
-    color: var(--text-main);
+    border-bottom: 2px solid var(--text-brown);
+    color: var(--text-brown);
     font-family: var(--font-body);
-    font-size: 1.1rem;
-    transition: 0.3s;
+    font-size: 1.2rem;
     border-radius: 0;
 }
 
-.form-input:focus {
-    outline: none;
-    border-bottom-color: var(--accent-gold);
-    padding-bottom: 10px;
-}
+.form-input::placeholder { color: rgba(80, 32, 13, 0.5); }
+.form-input:focus { outline: none; border-bottom-style: solid; }
 
 /* =========================================
    10. FOOTER
    ========================================= */
 footer {
-    background: #000;
-    padding: 5rem 0 2rem;
-    border-top: 1px solid rgba(212, 175, 55, 0.2);
+    background: var(--text-brown);
+    color: var(--bg-paper);
+    padding: 4rem 0;
     text-align: center;
 }
-.footer-links {
-    list-style: none;
-    display: flex;
-    justify-content: center;
-    gap: 2rem;
-    margin: 2rem 0;
+
+footer p { color: var(--bg-paper); }
+footer a { color: var(--bg-paper); opacity: 0.8; }
+footer a:hover { opacity: 1; }
+
+.footer-logo-filter {
+    /* Inverse le filtre pour rendre le logo blanc sur fond marron */
+    filter: brightness(0) invert(1); 
+    height: 50px;
+    margin-bottom: 2rem;
 }
 
 /* =========================================
-   11. ANIMATIONS & RESPONSIVE MOBILE
+   11. RESPONSIVE
    ========================================= */
-@keyframes fadeUp {
-    from { opacity: 0; transform: translateY(40px); }
-    to { opacity: 1; transform: translateY(0); }
-}
-
 @media (max-width: 1024px) {
-    .menu-grid { grid-template-columns: 1fr; gap: 3rem; }
-    .hero { background-attachment: scroll; } /* Perf Mobile */
+    .menu-grid { grid-template-columns: 1fr; }
+    .hero-content { margin: 0 20px; padding: 2rem; }
 }
 
 @media (max-width: 768px) {
-    :root { --header-h: 70px; }
+    :root { --header-h: 80px; }
     
-    .section { padding: 80px 0; }
-    
-    .mobile-toggle { display: block; z-index: 1002; position: relative; }
+    .mobile-toggle { display: block; }
     
     .nav-links {
         position: fixed;
-        top: 0; left: 0; width: 100%; height: 100vh;
-        background: #000;
+        top: var(--header-h); left: 0;
+        width: 100%; height: calc(100vh - var(--header-h));
+        background: var(--bg-paper);
         flex-direction: column;
         justify-content: center;
-        gap: 2.5rem;
-        transform: translateY(-100%);
-        transition: transform 0.6s cubic-bezier(0.85, 0, 0.15, 1);
-        z-index: 1001;
+        transform: translateX(100%);
+        transition: transform 0.4s ease;
+        border-top: 1px solid var(--text-brown);
     }
     
-    #mobile-check:checked ~ .nav-links { transform: translateY(0); }
+    #mobile-check:checked ~ .nav-links { transform: translateX(0); }
     
-    .nav-links a { font-size: 1.5rem; }
+    .grid-2, .grid-3 { grid-template-columns: 1fr; gap: 2rem; }
     
-    h1 { font-size: 2.8rem; }
-    
-    .grid-2, .grid-3 { grid-template-columns: 1fr; }
-    
-    /* Bouton Mobile : Full width */
-    .btn { width: 100%; display: block; }
+    h1 { font-size: 3rem; }
+    h2 { font-size: 1.8rem; border-bottom-width: 1px; }
 }

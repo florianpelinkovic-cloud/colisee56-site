@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Réservation | COLISÉE 56</title>
-    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -17,10 +17,10 @@
             <nav>
                 <ul class="nav-links">
                     <li><a href="index.html">Accueil</a></li>
-                    <li><a href="menu.html">La Carte</a></li>
-                    <li><a href="about.html">Le Restaurant</a></li>
-                    <li><a href="contact.html">Infos</a></li>
-                    <li><a href="reservation.html" class="active" style="color:var(--accent-gold);">Réserver</a></li>
+                    <li><a href="menu.html">Le Menu</a></li>
+                    <li><a href="about.html">La Maison</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="reservation.html" class="active" style="border: 2px solid var(--text-brown); padding: 8px 20px;">Réserver</a></li>
                 </ul>
             </nav>
         </div>
@@ -32,16 +32,16 @@
         <div class="container">
             <div class="grid-2">
                 <div>
-                    <h2 style="text-align: left;">Réserver</h2>
-                    <p>Pour le déjeuner ou le dîner, assurez-vous de vivre l'expérience Colisée 56. Nous recommandons de réserver 24h à l'avance pour le dîner.</p>
-                    <div style="margin-top: 2rem; border-left: 1px solid var(--accent-gold); padding-left: 20px;">
-                        <h4 style="color: var(--accent-gold); text-transform: uppercase; letter-spacing: 2px; margin-bottom: 10px;">Horaires</h4>
+                    <h2 style="text-align: left; transform: none; left: 0;">Réserver</h2>
+                    <p>Pour le déjeuner ou le dîner, assurez-vous de vivre l'expérience Colisée 56.</p>
+                    <div style="margin-top: 2rem; border-left: 3px solid var(--text-brown); padding-left: 20px;">
+                        <h4 style="margin-bottom: 10px;">Horaires</h4>
                         <p style="margin-bottom: 5px;">Midi : 12h00 - 14h45</p>
                         <p>Soir : 18h30 - 22h45</p>
                     </div>
                 </div>
 
-                <div class="card" style="text-align: left;">
+                <div class="card" style="text-align: left; background: var(--white-soft);">
                     <form action="#" method="POST">
                         <div class="form-group">
                             <input type="text" class="form-input" placeholder="Nom & Prénom" required>
@@ -55,25 +55,23 @@
                         
                         <div class="grid-2" style="gap: 1rem; margin-bottom: 0;">
                             <div class="form-group">
-                                <label style="font-size: 0.8rem; color: #666;">Date</label>
                                 <input type="date" class="form-input" required>
                             </div>
                             <div class="form-group">
-                                <label style="font-size: 0.8rem; color: #666;">Heure</label>
-                                <select class="form-input" required style="background: #121212;">
-                                    <option value="" disabled selected>Choisir...</option>
+                                <select class="form-input" required>
+                                    <option value="" disabled selected>Heure...</option>
                                     <optgroup label="Déjeuner">
                                         <option>12:00</option><option>12:30</option><option>13:00</option>
                                     </optgroup>
                                     <optgroup label="Dîner">
-                                        <option>19:00</option><option>19:30</option><option>20:00</option><option>20:30</option><option>21:00</option>
+                                        <option>19:00</option><option>19:30</option><option>20:00</option><option>21:00</option>
                                     </optgroup>
                                 </select>
                             </div>
                         </div>
 
                         <div class="form-group">
-                            <input type="number" class="form-input" placeholder="Nombre de couverts" min="1" max="10" required>
+                            <input type="number" class="form-input" placeholder="Couverts" min="1" max="10" required>
                         </div>
 
                         <button type="submit" class="btn" style="width: 100%; margin-top: 1rem;">Confirmer</button>
@@ -85,6 +83,7 @@
 
     <footer>
         <div class="container">
+            <img src="Colisée-56-logo-blanc.png" alt="Logo" class="footer-logo-filter">
             <p>&copy; 2024 Colisée 56.</p>
         </div>
     </footer>

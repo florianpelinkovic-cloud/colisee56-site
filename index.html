@@ -3,19 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>COLISÉE 56 | L'Italie à Paris</title>
+    <title>COLISÉE 56 | Restaurant Italien</title>
+    <!-- Montserrat (Area substitute) & Cormorant Garamond (Sunflower substitute) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
     <header>
         <div class="nav-container">
-            <a href="index.html" class="logo">
-                <img src="Colisée-56-logo-blanc.png" alt="Colisée 56">
-            </a>
+            <!-- Le logo sera coloré en marron par le CSS -->
+            <a href="index.html" class="logo"><img src="Colisée-56-logo-blanc.png" alt="Colisée 56"></a>
             
             <input type="checkbox" id="mobile-check">
             <label for="mobile-check" class="mobile-toggle">☰</label>
@@ -23,10 +23,10 @@
             <nav>
                 <ul class="nav-links">
                     <li><a href="index.html" class="active">Accueil</a></li>
-                    <li><a href="menu.html">La Carte</a></li>
-                    <li><a href="about.html">Le Restaurant</a></li>
-                    <li><a href="contact.html">Infos & Contact</a></li>
-                    <li><a href="reservation.html" style="color:var(--accent-gold);">Réserver</a></li>
+                    <li><a href="menu.html">Le Menu</a></li>
+                    <li><a href="about.html">La Maison</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="reservation.html" style="border: 2px solid var(--text-brown); padding: 8px 20px;">Réserver</a></li>
                 </ul>
             </nav>
         </div>
@@ -34,67 +34,53 @@
 
     <section class="hero">
         <div class="hero-content">
-            <h1>COLISÉE 56</h1>
-            <p style="font-size: 1.2rem; margin-bottom: 2.5rem; color: #ddd;">
-                Une cuisine italienne d'exception au cœur du 8ème arrondissement.
-            </p>
-            <div>
-                <a href="menu.html" class="btn">Voir le Menu</a>
-                <a href="reservation.html" class="btn" style="margin-left: 10px; border-color: #fff; color: #fff;">Réserver</a>
+            <h1>Colisée 56</h1>
+            <p>Cucina Autentica Italiana</p>
+            <div style="margin-top: 2rem;">
+                <a href="menu.html" class="btn">Voir la Carte</a>
             </div>
         </div>
     </section>
 
-    <!-- SECTION SIGNATURES -->
     <section class="section">
         <div class="container">
-            <h2>Nos Signatures</h2>
+            <h2>Les Incontournables</h2>
             <div class="grid-3">
-                <div class="card">
+                <article class="card">
                     <h3>Tagliolini Tartufo</h3>
-                    <p>Pâtes fraîches maison, crème de truffe noire, copeaux de parmesan 24 mois.</p>
-                </div>
-                <div class="card">
-                    <h3>Filet de Boeuf</h3>
-                    <p>Cuit à la perfection, réduction de vin Barolo, purée à la truffe.</p>
-                </div>
-                <div class="card">
-                    <h3>Tiramisu Pistache</h3>
-                    <p>La douceur du mascarpone alliée à la richesse de la pistache de Sicile.</p>
-                </div>
-            </div>
-            <div style="text-align: center; margin-top: 4rem;">
-                <a href="menu.html" class="btn">Découvrir toute la carte</a>
+                    <p>Pâtes fraîches maison, crème de truffe noire.</p>
+                </article>
+                <article class="card">
+                    <h3>Bistecca</h3>
+                    <p>Côte de bœuf grillée, romarin, huile d'olive.</p>
+                </article>
+                <article class="card">
+                    <h3>Tiramisù</h3>
+                    <p>La recette classique au café et mascarpone.</p>
+                </article>
             </div>
         </div>
     </section>
 
-    <!-- SECTION AMBIANCE (Sombre) -->
-    <section class="section section-dark">
+    <section class="section section-alt">
         <div class="container">
             <div class="grid-2">
-                <div style="text-align: left;">
-                    <h2 style="text-align: left; margin-bottom: 2rem;">L'Expérience</h2>
-                    <p>Situé rue du Colisée, notre établissement vous accueille dans un cadre feutré et élégant. Loin du tumulte parisien, le temps semble s'arrêter pour laisser place à la dégustation.</p>
-                    <p>Que ce soit pour un déjeuner d'affaires ou un dîner romantique, le Colisée 56 offre une atmosphère intimiste propice aux échanges.</p>
-                    <a href="about.html" class="btn" style="margin-top: 1rem;">Notre Histoire</a>
+                <div>
+                    <h2>L'Atmosphère</h2>
+                    <p>Une élégance simple, des matières nobles, et l'odeur du pain chaud.</p>
+                    <p>Nous vous accueillons rue du Colisée dans un cadre qui rappelle les dimanches en famille en Italie, avec cette touche de raffinement parisien.</p>
+                    <a href="about.html" style="text-decoration: underline; font-family: var(--font-title); font-weight: 600;">En savoir plus</a>
                 </div>
-                <!-- Placeholder Image Ambiance -->
-                <div style="height: 400px; background: url('https://images.unsplash.com/photo-1550966871-3ed3c47e2ce2?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80') center/cover; border-radius: 4px; border: 1px solid rgba(255,255,255,0.1);"></div>
+                <div style="height: 400px; border: 1px solid var(--text-brown); background: url('https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80') center/cover;"></div>
             </div>
         </div>
     </section>
 
     <footer>
         <div class="container">
-            <img src="Colisée-56-logo-blanc.png" alt="Logo" style="height: 40px; margin-bottom: 1rem; opacity: 0.7;">
+            <img src="Colisée-56-logo-blanc.png" alt="Logo" class="footer-logo-filter">
             <p>56 Rue du Colisée, 75008 Paris</p>
-            <ul class="footer-links">
-                <li><a href="menu.html">Carte</a></li>
-                <li><a href="reservation.html">Réservation</a></li>
-                <li><a href="contact.html">Contact</a></li>
-            </ul>
-            <p style="font-size: 0.8rem; opacity: 0.5;">&copy; 2024 Colisée 56. Tous droits réservés.</p>
+            <p>01 83 97 09 26</p>
         </div>
     </footer>
 

@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contact | COLISÉE 56</title>
-    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -17,10 +17,10 @@
             <nav>
                 <ul class="nav-links">
                     <li><a href="index.html">Accueil</a></li>
-                    <li><a href="menu.html">La Carte</a></li>
-                    <li><a href="about.html">Le Restaurant</a></li>
-                    <li><a href="contact.html" class="active">Infos</a></li>
-                    <li><a href="reservation.html" style="color:var(--accent-gold);">Réserver</a></li>
+                    <li><a href="menu.html">Le Menu</a></li>
+                    <li><a href="about.html">La Maison</a></li>
+                    <li><a href="contact.html" class="active">Contact</a></li>
+                    <li><a href="reservation.html" style="border: 2px solid var(--text-brown); padding: 8px 20px;">Réserver</a></li>
                 </ul>
             </nav>
         </div>
@@ -32,34 +32,32 @@
         <div class="container">
             <div class="grid-2">
                 <div>
-                    <h2 style="text-align: left;">Contact</h2>
+                    <h2 style="text-align: left; transform: none; left: 0;">Contact</h2>
                     
                     <div style="margin-bottom: 3rem;">
-                        <h4 style="color:var(--accent-gold); text-transform:uppercase; letter-spacing:2px; margin-bottom:1rem;">Adresse</h4>
-                        <p style="font-size: 1.1rem; color: #fff;">56 Rue du Colisée<br>75008 Paris, France</p>
+                        <h3>Adresse</h3>
+                        <p>56 Rue du Colisée<br>75008 Paris</p>
                     </div>
 
                     <div style="margin-bottom: 3rem;">
-                        <h4 style="color:var(--accent-gold); text-transform:uppercase; letter-spacing:2px; margin-bottom:1rem;">Réservation</h4>
-                        <p><a href="tel:0183970926" style="font-size: 1.3rem; color: #fff;">01 83 97 09 26</a></p>
-                        <p><a href="mailto:contact@colisee56.com">contact@colisee56.com</a></p>
+                        <h3>Réservation</h3>
+                        <p style="font-size: 1.4rem; font-weight: 700;">01 83 97 09 26</p>
+                        <p><a href="mailto:contact@colisee56.com" style="text-decoration: underline;">contact@colisee56.com</a></p>
                     </div>
 
                     <div>
-                        <h4 style="color:var(--accent-gold); text-transform:uppercase; letter-spacing:2px; margin-bottom:1rem;">Horaires</h4>
+                        <h3>Ouverture</h3>
                         <p>Lundi au Dimanche</p>
-                        <p>Déjeuner : 12h00 - 14h45</p>
-                        <p>Dîner : 18h30 - 22h45</p>
+                        <p>12h00 - 14h45 | 18h30 - 22h45</p>
                     </div>
                 </div>
 
-                <!-- Google Maps (Style sombre via CSS filter) -->
-                <div style="height: 500px; width: 100%; border: 1px solid rgba(255,255,255,0.1);">
+                <div style="height: 500px; border: 2px solid var(--text-brown);">
                     <iframe 
                         width="100%" 
                         height="100%" 
                         frameborder="0" 
-                        style="border:0; filter: grayscale(100%) invert(92%) contrast(83%);" 
+                        style="border:0; filter: sepia(0.5) contrast(1.1);" 
                         src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2624.2373030230685!2d2.3079873156749036!3d48.87278497928892!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47e66fc48b64c06b%3A0x1c8b3f0f1f1f1f1f!2s56%20Rue%20du%20Colis%C3%A9e%2C%2075008%20Paris!5e0!3m2!1sfr!2sfr!4v1620000000000!5m2!1sfr!2sfr" 
                         allowfullscreen 
                         loading="lazy">
@@ -71,6 +69,7 @@
 
     <footer>
         <div class="container">
+            <img src="Colisée-56-logo-blanc.png" alt="Logo" class="footer-logo-filter">
             <p>&copy; 2024 Colisée 56.</p>
         </div>
     </footer>
