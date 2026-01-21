@@ -4,177 +4,134 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>La Carte | COLISÉE 56</title>
-    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
     <header>
-        <div class="container nav-container">
-            <a href="index.html" class="logo">
-                <img src="Colisée-56-logo-blanc.png" alt="Colisée 56 Logo" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
-                <span style="display:none; font-family:'Playfair Display'; font-size:1.5rem; color:#fff;">COLISÉE 56</span>
-            </a>
-            <input type="checkbox" id="mobile-menu-check">
-            <label for="mobile-menu-check" class="mobile-toggle">☰</label>
+        <div class="nav-container">
+            <a href="index.html" class="logo"><img src="Colisée-56-logo-blanc.png" alt="Colisée 56"></a>
+            <input type="checkbox" id="mobile-check">
+            <label for="mobile-check" class="mobile-toggle">☰</label>
             <nav>
                 <ul class="nav-links">
                     <li><a href="index.html">Accueil</a></li>
                     <li><a href="menu.html" class="active">La Carte</a></li>
                     <li><a href="about.html">Le Restaurant</a></li>
                     <li><a href="contact.html">Infos</a></li>
-                    <li><a href="reservation.html" class="btn" style="margin:0;">Réserver</a></li>
+                    <li><a href="reservation.html" style="color:var(--accent-gold);">Réserver</a></li>
                 </ul>
             </nav>
         </div>
     </header>
 
-    <!-- ANTIPASTI -->
-    <section class="section section-dark" style="margin-top: 60px;">
-        <div class="container fade-in">
-            <h2 class="menu-category-title">Antipasti</h2>
-            <div class="menu-grid">
-                <div class="menu-item">
-                    <div class="menu-header">
-                        <span class="dish-name">Antipasti Italiani (pour 2)</span>
-                        <span class="dish-price">27€</span>
-                    </div>
-                    <div class="dish-desc">Légumes, mozzarella, assortiment de charcuterie fine.</div>
-                </div>
-                <div class="menu-item">
-                    <div class="menu-header">
-                        <span class="dish-name">Burrata & Tomates</span>
-                        <span class="dish-price">17€</span>
-                    </div>
-                    <div class="dish-desc">Burrata crémeuse, tomates cerises confites.</div>
-                </div>
-                <div class="menu-item">
-                    <div class="menu-header">
-                        <span class="dish-name">Fritura de Calamari</span>
-                        <span class="dish-price">15€</span>
-                    </div>
-                    <div class="dish-desc">Calamars frits, sauce tartare maison.</div>
-                </div>
-                <div class="menu-item">
-                    <div class="menu-header">
-                        <span class="dish-name">Parmigiana aux Aubergines</span>
-                        <span class="dish-price">15€</span>
-                    </div>
-                    <div class="dish-desc">Aubergines gratinées, mozzarella, tomates, basilic.</div>
-                </div>
-                <div class="menu-item">
-                    <div class="menu-header">
-                        <span class="dish-name">Carpaccio Bresaola</span>
-                        <span class="dish-price">16€</span>
-                    </div>
-                    <div class="dish-desc">Roquette, pignons, pesto, basilic, parmesan.</div>
-                </div>
-            </div>
-        </div>
-    </section>
+    <div style="height: 100px;"></div> <!-- Spacer Header -->
 
-    <!-- PASTA & INSALATE -->
     <section class="section">
-        <div class="container slide-up">
-            <h2 class="menu-category-title">Insalate & Paste</h2>
+        <div class="container">
+            <h2>Notre Carte</h2>
+            
+            <!-- ANTIPASTI -->
+            <h3 class="menu-cat-title">Antipasti</h3>
             <div class="menu-grid">
-                 <!-- Insalate -->
                 <div class="menu-item">
-                    <div class="menu-header">
-                        <span class="dish-name">Insalata Cesar</span>
-                        <span class="dish-price">17€</span>
+                    <div class="item-header">
+                        <span class="item-name">Antipasti Italiani (pour 2)</span>
+                        <span class="item-price">27€</span>
                     </div>
-                    <div class="dish-desc">Salade, blanc de poulet, croûtons, parmesan, sauce césar.</div>
+                    <div class="item-desc">Légumes grillés, mozzarella di bufala, charcuterie fine.</div>
                 </div>
                 <div class="menu-item">
-                    <div class="menu-header">
-                        <span class="dish-name">Insalata Colisée 56</span>
-                        <span class="dish-price">17€</span>
+                    <div class="item-header">
+                        <span class="item-name">Burrata & Tomates</span>
+                        <span class="item-price">17€</span>
                     </div>
-                    <div class="dish-desc">Roquette, orange, olives noires, fenouil, tomates, mozzarella, noix.</div>
-                </div>
-                <!-- Paste -->
-                <div class="menu-item">
-                    <div class="menu-header">
-                        <span class="dish-name">Linguine Vongole</span>
-                        <span class="dish-price">27€</span>
-                    </div>
-                    <div class="dish-desc">Aux palourdes fraîches et tomates.</div>
+                    <div class="item-desc">Burrata des Pouilles, tomates cerises confites, basilic.</div>
                 </div>
                 <div class="menu-item">
-                    <div class="menu-header">
-                        <span class="dish-name">Spaghetti Carbonara</span>
-                        <span class="dish-price">19€</span>
+                    <div class="item-header">
+                        <span class="item-name">Fritura de Calamari</span>
+                        <span class="item-price">15€</span>
                     </div>
-                    <div class="dish-desc">Guanciale, pecorino, oeuf, poivre noir.</div>
+                    <div class="item-desc">Calamars frits légers, sauce tartare maison.</div>
                 </div>
                 <div class="menu-item">
-                    <div class="menu-header">
-                        <span class="dish-name">Pappardelle Truffe</span>
-                        <span class="dish-price">28€</span>
+                    <div class="item-header">
+                        <span class="item-name">Carpaccio Bresaola</span>
+                        <span class="item-price">16€</span>
                     </div>
-                    <div class="dish-desc">Crème de truffe et cèpes.</div>
+                    <div class="item-desc">Roquette, pignons torréfiés, parmesan, huile de truffe.</div>
+                </div>
+            </div>
+
+            <!-- PASTE & INSALATE -->
+            <h3 class="menu-cat-title">Insalate & Paste</h3>
+            <div class="menu-grid">
+                <div class="menu-item">
+                    <div class="item-header">
+                        <span class="item-name">Insalata Cesar</span>
+                        <span class="item-price">17€</span>
+                    </div>
+                    <div class="item-desc">Coeur de romaine, poulet, croûtons, sauce maison.</div>
                 </div>
                 <div class="menu-item">
-                    <div class="menu-header">
-                        <span class="dish-name">Lasagnes du Chef</span>
-                        <span class="dish-price">19€</span>
+                    <div class="item-header">
+                        <span class="item-name">Linguine Vongole</span>
+                        <span class="item-price">27€</span>
                     </div>
-                    <div class="dish-desc">Recette traditionnelle à la bolognaise.</div>
+                    <div class="item-desc">Palourdes fraîches, vin blanc, ail, persil.</div>
+                </div>
+                <div class="menu-item">
+                    <div class="item-header">
+                        <span class="item-name">Spaghetti Carbonara</span>
+                        <span class="item-price">19€</span>
+                    </div>
+                    <div class="item-desc">La vraie : Guanciale, Pecorino Romano, Jaune d'oeuf, Poivre.</div>
+                </div>
+                <div class="menu-item">
+                    <div class="item-header">
+                        <span class="item-name">Pappardelle Truffe</span>
+                        <span class="item-price">28€</span>
+                    </div>
+                    <div class="item-desc">Crème de truffe noire, champignons des bois.</div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- SECONDI & PIZZE -->
+    <!-- SECONDI & PIZZA -->
     <section class="section section-dark">
-        <div class="container slide-up">
-            <h2 class="menu-category-title">Secondi & Pizze</h2>
+        <div class="container">
+            <h3 class="menu-cat-title">Secondi & Pizze</h3>
             <div class="menu-grid">
-                 <!-- Secondi -->
                 <div class="menu-item">
-                    <div class="menu-header">
-                        <span class="dish-name">Filet de Boeuf</span>
-                        <span class="dish-price">37€</span>
+                    <div class="item-header">
+                        <span class="item-name">Filet de Boeuf</span>
+                        <span class="item-price">37€</span>
                     </div>
-                    <div class="dish-desc">Réduction de Barolo, purée maison.</div>
+                    <div class="item-desc">Réduction de Barolo, purée maison.</div>
                 </div>
                 <div class="menu-item">
-                    <div class="menu-header">
-                        <span class="dish-name">Escalope à la Milanaise</span>
-                        <span class="dish-price">25€</span>
+                    <div class="item-header">
+                        <span class="item-name">Escalope Milanaise</span>
+                        <span class="item-price">25€</span>
                     </div>
-                    <div class="dish-desc">Escalope de veau panée.</div>
+                    <div class="item-desc">Veau pané, roquette et tomates cerises.</div>
                 </div>
                 <div class="menu-item">
-                    <div class="menu-header">
-                        <span class="dish-name">Poisson du Jour</span>
-                        <span class="dish-price">28€</span>
+                    <div class="item-header">
+                        <span class="item-name">Pizza Tartufata</span>
+                        <span class="item-price">21€</span>
                     </div>
-                    <div class="dish-desc">Selon arrivage, légumes grillés.</div>
-                </div>
-
-                <!-- Pizze -->
-                <div class="menu-item">
-                    <div class="menu-header">
-                        <span class="dish-name">Pizza Margherita</span>
-                        <span class="dish-price">14€</span>
-                    </div>
-                    <div class="dish-desc">Sauce tomate, mozzarella, basilic frais.</div>
+                    <div class="item-desc">Crème de truffe, mozzarella, champignons.</div>
                 </div>
                 <div class="menu-item">
-                    <div class="menu-header">
-                        <span class="dish-name">Pizza Tartufata</span>
-                        <span class="dish-price">21€</span>
+                    <div class="item-header">
+                        <span class="item-name">Pizza Parma</span>
+                        <span class="item-price">19€</span>
                     </div>
-                    <div class="dish-desc">Crème de truffe, mozzarella, stracciatella.</div>
-                </div>
-                 <div class="menu-item">
-                    <div class="menu-header">
-                        <span class="dish-name">Pizza Parma</span>
-                        <span class="dish-price">19€</span>
-                    </div>
-                    <div class="dish-desc">Tomate, mozzarella, jambon de Parme, roquette.</div>
+                    <div class="item-desc">Tomate, mozzarella, Jambon de Parme 24 mois.</div>
                 </div>
             </div>
         </div>
@@ -182,44 +139,45 @@
 
     <!-- DOLCI -->
     <section class="section">
-        <div class="container slide-up">
-            <h2 class="menu-category-title">Dolci</h2>
+        <div class="container">
+            <h3 class="menu-cat-title">Dolci</h3>
             <div class="menu-grid">
                 <div class="menu-item">
-                    <div class="menu-header">
-                        <span class="dish-name">Tiramisu Café</span>
-                        <span class="dish-price">10€</span>
+                    <div class="item-header">
+                        <span class="item-name">Tiramisu Classico</span>
+                        <span class="item-price">10€</span>
                     </div>
                 </div>
                 <div class="menu-item">
-                    <div class="menu-header">
-                        <span class="dish-name">Tiramisu Pistache</span>
-                        <span class="dish-price">12€</span>
+                    <div class="item-header">
+                        <span class="item-name">Tiramisu Pistache</span>
+                        <span class="item-price">12€</span>
                     </div>
                 </div>
                 <div class="menu-item">
-                    <div class="menu-header">
-                        <span class="dish-name">Panna Cotta</span>
-                        <span class="dish-price">10€</span>
+                    <div class="item-header">
+                        <span class="item-name">Panna Cotta</span>
+                        <span class="item-price">10€</span>
                     </div>
+                    <div class="item-desc">Fruits rouges ou caramel.</div>
                 </div>
                 <div class="menu-item">
-                    <div class="menu-header">
-                        <span class="dish-name">Café Gourmand</span>
-                        <span class="dish-price">15€</span>
+                    <div class="item-header">
+                        <span class="item-name">Café Gourmand</span>
+                        <span class="item-price">15€</span>
                     </div>
                 </div>
             </div>
             
-            <div style="text-align: center; margin-top: 4rem;">
-                <a href="reservation.html" class="btn btn-pulse">Réserver une table</a>
+            <div style="text-align: center; margin-top: 5rem;">
+                <a href="reservation.html" class="btn">Réserver une table</a>
             </div>
         </div>
     </section>
 
     <footer>
         <div class="container">
-            <div class="copyright"><p>&copy; 2024 Colisée 56.</p></div>
+            <p>&copy; 2024 Colisée 56. Tous droits réservés.</p>
         </div>
     </footer>
 
