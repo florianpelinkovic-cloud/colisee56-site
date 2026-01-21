@@ -6,14 +6,20 @@
     <title>Réservation | COLISÉE 56</title>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
+    <!-- Firebase SDKs -->
+    <script src="https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js" type="module"></script>
+    <script src="https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js" type="module"></script>
+    <script src="https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js" type="module"></script>
 </head>
 <body>
 
     <header>
         <div class="nav-container">
-            <a href="index.html" class="logo"><img src="Colisée-56-logo-blanc.png" alt="Colisée 56"></a>
-            <input type="checkbox" id="mobile-check">
-            <label for="mobile-check" class="mobile-toggle">☰</label>
+            <a href="index.html" class="logo">
+                <img src="logo.png" alt="Colisée 56" onerror="this.style.display='none'; document.querySelector('.logo-fallback').style.display='block'">
+                <span class="logo-fallback" style="color:var(--text-brown)">COLISÉE 56</span>
+            </a>
+            <button class="mobile-toggle">☰</button>
             <nav>
                 <ul class="nav-links">
                     <li><a href="index.html">Accueil</a></li>
@@ -33,7 +39,7 @@
             <div class="grid-2">
                 <div>
                     <h2 style="text-align: left; transform: none; left: 0;">Réserver</h2>
-                    <p>Pour le déjeuner ou le dîner, assurez-vous de vivre l'expérience Colisée 56.</p>
+                    <p>Votre table vous attend. Remplissez ce formulaire pour une réservation instantanée.</p>
                     <div style="margin-top: 2rem; border-left: 3px solid var(--text-brown); padding-left: 20px;">
                         <h4 style="margin-bottom: 10px;">Horaires</h4>
                         <p style="margin-bottom: 5px;">Midi : 12h00 - 14h45</p>
@@ -42,40 +48,41 @@
                 </div>
 
                 <div class="card" style="text-align: left; background: var(--white-soft);">
-                    <form action="#" method="POST">
+                    <form id="reservationForm">
                         <div class="form-group">
-                            <input type="text" class="form-input" placeholder="Nom & Prénom" required>
+                            <input type="text" id="name" class="form-input" placeholder="Nom & Prénom" required>
                         </div>
                         <div class="form-group">
-                            <input type="email" class="form-input" placeholder="Email" required>
+                            <input type="email" id="email" class="form-input" placeholder="Email" required>
                         </div>
                         <div class="form-group">
-                            <input type="tel" class="form-input" placeholder="Téléphone" required>
+                            <input type="tel" id="phone" class="form-input" placeholder="Téléphone" required>
                         </div>
                         
                         <div class="grid-2" style="gap: 1rem; margin-bottom: 0;">
                             <div class="form-group">
-                                <input type="date" class="form-input" required>
+                                <input type="date" id="date" class="form-input" required>
                             </div>
                             <div class="form-group">
-                                <select class="form-input" required>
+                                <select id="time" class="form-input" required>
                                     <option value="" disabled selected>Heure...</option>
                                     <optgroup label="Déjeuner">
-                                        <option>12:00</option><option>12:30</option><option>13:00</option>
+                                        <option>12:00</option><option>12:30</option><option>13:00</option><option>13:30</option><option>14:00</option>
                                     </optgroup>
                                     <optgroup label="Dîner">
-                                        <option>19:00</option><option>19:30</option><option>20:00</option><option>21:00</option>
+                                        <option>19:00</option><option>19:30</option><option>20:00</option><option>20:30</option><option>21:00</option><option>21:30</option>
                                     </optgroup>
                                 </select>
                             </div>
                         </div>
 
                         <div class="form-group">
-                            <input type="number" class="form-input" placeholder="Couverts" min="1" max="10" required>
+                            <input type="number" id="guests" class="form-input" placeholder="Couverts" min="1" max="12" required>
                         </div>
 
-                        <button type="submit" class="btn" style="width: 100%; margin-top: 1rem;">Confirmer</button>
+                        <button type="submit" id="submitBtn" class="btn" style="width: 100%; margin-top: 1rem;">Confirmer</button>
                     </form>
+                    <div id="statusMessage" style="margin-top:1rem; text-align:center; font-weight:bold;"></div>
                 </div>
             </div>
         </div>
@@ -83,10 +90,74 @@
 
     <footer>
         <div class="container">
-            <img src="Colisée-56-logo-blanc.png" alt="Logo" class="footer-logo-filter">
             <p>&copy; 2024 Colisée 56.</p>
         </div>
     </footer>
+
+    <script>
+        // Menu Mobile
+        const toggleBtn = document.querySelector('.mobile-toggle');
+        const navLinks = document.querySelector('.nav-links');
+        toggleBtn.addEventListener('click', () => {
+            navLinks.classList.toggle('nav-active');
+            toggleBtn.textContent = navLinks.classList.contains('nav-active') ? '✕' : '☰';
+        });
+    </script>
+
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
+        import { getFirestore, collection, addDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
+        import { getAuth, signInAnonymously } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
+
+        const firebaseConfig = JSON.parse(__firebase_config);
+        const app = initializeApp(firebaseConfig);
+        const db = getFirestore(app);
+        const auth = getAuth(app);
+        const appId = typeof __app_id !== 'undefined' ? __app_id : 'default-app-id';
+
+        // Auth anonyme requise
+        signInAnonymously(auth).then(() => {
+            console.log("Connecté anonymement pour envoi réservation");
+        }).catch((error) => {
+            console.error("Erreur auth:", error);
+        });
+
+        document.getElementById('reservationForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const btn = document.getElementById('submitBtn');
+            const status = document.getElementById('statusMessage');
+            
+            btn.disabled = true;
+            btn.textContent = "Envoi en cours...";
+
+            try {
+                if (!auth.currentUser) await signInAnonymously(auth);
+
+                await addDoc(collection(db, 'artifacts', appId, 'public', 'data', 'reservations'), {
+                    name: document.getElementById('name').value,
+                    email: document.getElementById('email').value,
+                    phone: document.getElementById('phone').value,
+                    date: document.getElementById('date').value,
+                    time: document.getElementById('time').value,
+                    guests: document.getElementById('guests').value,
+                    createdAt: serverTimestamp(),
+                    status: 'Nouveau'
+                });
+
+                status.style.color = "green";
+                status.textContent = "Réservation confirmée ! À très vite.";
+                document.getElementById('reservationForm').reset();
+                btn.textContent = "Confirmer";
+                btn.disabled = false;
+
+            } catch (error) {
+                console.error("Erreur ajout document: ", error);
+                status.style.color = "red";
+                status.textContent = "Erreur. Veuillez nous appeler.";
+                btn.disabled = false;
+            }
+        });
+    </script>
 
 </body>
 </html>

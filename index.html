@@ -4,9 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>COLISÉE 56 | Restaurant Italien</title>
-    <!-- Montserrat (Area substitute) & Cormorant Garamond (Sunflower substitute) -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
@@ -14,11 +11,12 @@
 
     <header>
         <div class="nav-container">
-            <!-- Le logo sera coloré en marron par le CSS -->
-            <a href="index.html" class="logo"><img src="https://drive.google.com/file/d/150gdreyBKmi7dh1hDdoVQN0YMqGFVK0a/view?usp=sharing" alt="Colisée 56"></a>
+            <a href="index.html" class="logo">
+                <img src="logo.png" alt="Colisée 56" onerror="this.style.display='none'; document.querySelector('.logo-fallback').style.display='block'">
+                <span class="logo-fallback" style="color:var(--text-brown)">COLISÉE 56</span>
+            </a>
             
-            <input type="checkbox" id="mobile-check">
-            <label for="mobile-check" class="mobile-toggle">☰</label>
+            <button class="mobile-toggle" aria-label="Menu">☰</button>
 
             <nav>
                 <ul class="nav-links">
@@ -78,11 +76,22 @@
 
     <footer>
         <div class="container">
-            <img src="Colisée-56-logo-blanc.png" alt="Logo" class="footer-logo-filter">
+            <img src="logo.png" alt="Logo" class="footer-logo-filter" onerror="this.style.display='none'">
             <p>56 Rue du Colisée, 75008 Paris</p>
-            <p>01 83 97 09 26</p>
+            <p><a href="admin.html" style="font-size: 0.8rem; opacity: 0.3;">Accès Commerçant</a></p>
         </div>
     </footer>
+
+    <!-- Script Menu Mobile -->
+    <script>
+        const toggleBtn = document.querySelector('.mobile-toggle');
+        const navLinks = document.querySelector('.nav-links');
+
+        toggleBtn.addEventListener('click', () => {
+            navLinks.classList.toggle('nav-active');
+            toggleBtn.textContent = navLinks.classList.contains('nav-active') ? '✕' : '☰';
+        });
+    </script>
 
 </body>
 </html>

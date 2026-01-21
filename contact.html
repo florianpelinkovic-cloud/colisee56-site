@@ -11,9 +11,11 @@
 
     <header>
         <div class="nav-container">
-            <a href="index.html" class="logo"><img src="Colisée-56-logo-blanc.png" alt="Colisée 56"></a>
-            <input type="checkbox" id="mobile-check">
-            <label for="mobile-check" class="mobile-toggle">☰</label>
+            <a href="index.html" class="logo">
+                <img src="logo.png" alt="Colisée 56" onerror="this.style.display='none'; document.querySelector('.logo-fallback').style.display='block'">
+                <span class="logo-fallback" style="color:var(--text-brown)">COLISÉE 56</span>
+            </a>
+            <button class="mobile-toggle">☰</button>
             <nav>
                 <ul class="nav-links">
                     <li><a href="index.html">Accueil</a></li>
@@ -69,10 +71,17 @@
 
     <footer>
         <div class="container">
-            <img src="Colisée-56-logo-blanc.png" alt="Logo" class="footer-logo-filter">
             <p>&copy; 2024 Colisée 56.</p>
         </div>
     </footer>
 
+    <script>
+        const toggleBtn = document.querySelector('.mobile-toggle');
+        const navLinks = document.querySelector('.nav-links');
+        toggleBtn.addEventListener('click', () => {
+            navLinks.classList.toggle('nav-active');
+            toggleBtn.textContent = navLinks.classList.contains('nav-active') ? '✕' : '☰';
+        });
+    </script>
 </body>
 </html>

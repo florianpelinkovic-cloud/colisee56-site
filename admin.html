@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Réservations | COLISÉE 56</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <!-- Firebase SDKs -->
+    <script src="https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js" type="module"></script>
+    <script src="https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js" type="module"></script>
+    <script src="https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js" type="module"></script>
+</head>
+<body>
+
+    <header>
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <span style="font-family:var(--font-title); font-weight:700;">COLISÉE 56 <span style="font-size:0.8rem; color:var(--brown-light)">ADMIN</span></span>
+            </a>
+            <a href="index.html" class="btn" style="padding: 10px 20px; font-size: 0.8rem;">Retour Site</a>
+        </div>
+    </header>
+
+    <div style="height: 100px;"></div>
+
+    <section class="section">
+        <div class="container">
+            <h2>Cahier de Réservations</h2>
+            
+            <!-- Simple Login Simulation -->
+            <div id="loginPanel" class="card" style="max-width: 400px; margin: 0 auto;">
+                <h3>Connexion Commerçant</h3>
+                <div class="form-group">
+                    <input type="password" id="adminPass" class="form-input" placeholder="Mot de passe">
+                </div>
+                <button onclick="checkPass()" class="btn">Voir les réservations</button>
+                <p style="margin-top:1rem; font-size:0.9rem; opacity:0.6;">(Mot de passe démo: admin)</p>
+            </div>
+
+            <!-- Dashboard -->
+            <div id="dashboardPanel" style="display:none;">
+                <p id="loadingText">Chargement des réservations...</p>
+                <div class="admin-table-container">
+                    <table class="admin-table">
+                        <thead>
+                            <tr>
+                                <th>Date / Heure</th>
+                                <th>Client</th>
+                                <th>Couverts</th>
+                                <th>Contact</th>
+                                <th>Statut</th>
+                            </tr>
+                        </thead>
+                        <tbody id="resList">
+                            <!-- Les réservations s'afficheront ici -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <script>
+        function checkPass() {
+            const pass = document.getElementById('adminPass').value;
+            if(pass === 'admin') {
+                document.getElementById('loginPanel').style.display = 'none';
+                document.getElementById('dashboardPanel').style.display = 'block';
+                loadReservations();
+            } else {
+                alert('Mot de passe incorrect');
+            }
+        }
+    </script>
+
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
+        import { getFirestore, collection, query, orderBy, onSnapshot } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
+        import { getAuth, signInAnonymously } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
+
+        const firebaseConfig = JSON.parse(__firebase_config);
+        const app = initializeApp(firebaseConfig);
+        const db = getFirestore(app);
+        const auth = getAuth(app);
+        const appId = typeof __app_id !== 'undefined' ? __app_id : 'default-app-id';
+
+        window.loadReservations = async function() {
+            if (!auth.currentUser) await signInAnonymously(auth);
+
+            const q = query(collection(db, 'artifacts', appId, 'public', 'data', 'reservations')); // Simple query, sort in JS
+            
+            onSnapshot(q, (snapshot) => {
+                const list = document.getElementById('resList');
+                const loading = document.getElementById('loadingText');
+                loading.style.display = 'none';
+                list.innerHTML = '';
+                
+                let resData = [];
+                snapshot.forEach(doc => {
+                    resData.push(doc.data());
+                });
+
+                // Sort JS side (Rule 2)
+                resData.sort((a, b) => {
+                    // Combine date/time strings for sorting
+                    const dateA = a.date + a.time;
+                    const dateB = b.date + b.time;
+                    return dateA > dateB ? 1 : -1;
+                });
+
+                if (resData.length === 0) {
+                    list.innerHTML = '<tr><td colspan="5" style="text-align:center;">Aucune réservation pour le moment.</td></tr>';
+                    return;
+                }
+
+                resData.forEach(data => {
+                    const row = `
+                        <tr>
+                            <td><strong>${data.date}</strong> à ${data.time}</td>
+                            <td>${data.name}</td>
+                            <td style="font-weight:bold; font-size:1.2rem; color:var(--text-brown);">${data.guests}</td>
+                            <td><a href="tel:${data.phone}">${data.phone}</a><br><small>${data.email}</small></td>
+                            <td><span class="status-badge status-new">${data.status || 'Confirmé'}</span></td>
+                        </tr>
+                    `;
+                    list.innerHTML += row;
+                });
+            }, (error) => {
+                console.error("Error fetching: ", error);
+                document.getElementById('loadingText').textContent = "Erreur de chargement.";
+            });
+        }
+    </script>
+</body>
+</html>

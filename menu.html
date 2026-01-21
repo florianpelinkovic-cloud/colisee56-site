@@ -11,9 +11,11 @@
 
     <header>
         <div class="nav-container">
-            <a href="index.html" class="logo"><img src="Colisée-56-logo-blanc.png" alt="Colisée 56"></a>
-            <input type="checkbox" id="mobile-check">
-            <label for="mobile-check" class="mobile-toggle">☰</label>
+            <a href="index.html" class="logo">
+                <img src="logo.png" alt="Colisée 56" onerror="this.style.display='none'; document.querySelector('.logo-fallback').style.display='block'">
+                <span class="logo-fallback" style="color:var(--text-brown)">COLISÉE 56</span>
+            </a>
+            <button class="mobile-toggle">☰</button>
             <nav>
                 <ul class="nav-links">
                     <li><a href="index.html">Accueil</a></li>
@@ -41,7 +43,8 @@
                     </div>
                     <div class="item-desc">Légumes grillés, mozzarella di bufala, charcuterie fine.</div>
                 </div>
-                <div class="menu-item">
+                <!-- Autres items ... -->
+                 <div class="menu-item">
                     <div class="item-header">
                         <span class="item-name">Burrata & Tomates</span>
                         <span class="item-price">17€</span>
@@ -68,31 +71,31 @@
             <div class="menu-grid">
                 <div class="menu-item">
                     <div class="item-header">
-                        <span class="item-name">Insalata Cesar</span>
-                        <span class="item-price">17€</span>
-                    </div>
-                    <div class="item-desc">Coeur de romaine, poulet, croûtons, sauce maison.</div>
-                </div>
-                <div class="menu-item">
-                    <div class="item-header">
                         <span class="item-name">Linguine Vongole</span>
                         <span class="item-price">27€</span>
                     </div>
                     <div class="item-desc">Palourdes fraîches, vin blanc, ail, persil.</div>
                 </div>
-                <div class="menu-item">
+                 <div class="menu-item">
                     <div class="item-header">
                         <span class="item-name">Spaghetti Carbonara</span>
                         <span class="item-price">19€</span>
                     </div>
                     <div class="item-desc">Guanciale, Pecorino Romano, Jaune d'oeuf, Poivre.</div>
                 </div>
-                <div class="menu-item">
+                 <div class="menu-item">
                     <div class="item-header">
                         <span class="item-name">Pappardelle Truffe</span>
                         <span class="item-price">28€</span>
                     </div>
                     <div class="item-desc">Crème de truffe noire, champignons des bois.</div>
+                </div>
+                <div class="menu-item">
+                    <div class="item-header">
+                        <span class="item-name">Insalata Cesar</span>
+                        <span class="item-price">17€</span>
+                    </div>
+                    <div class="item-desc">Coeur de romaine, poulet, croûtons, sauce maison.</div>
                 </div>
             </div>
 
@@ -107,19 +110,19 @@
                 </div>
                 <div class="menu-item">
                     <div class="item-header">
-                        <span class="item-name">Escalope Milanaise</span>
-                        <span class="item-price">25€</span>
-                    </div>
-                    <div class="item-desc">Veau pané, roquette et tomates cerises.</div>
-                </div>
-                <div class="menu-item">
-                    <div class="item-header">
                         <span class="item-name">Pizza Tartufata</span>
                         <span class="item-price">21€</span>
                     </div>
                     <div class="item-desc">Crème de truffe, mozzarella, champignons.</div>
                 </div>
                 <div class="menu-item">
+                    <div class="item-header">
+                        <span class="item-name">Escalope Milanaise</span>
+                        <span class="item-price">25€</span>
+                    </div>
+                    <div class="item-desc">Veau pané, roquette et tomates cerises.</div>
+                </div>
+                 <div class="menu-item">
                     <div class="item-header">
                         <span class="item-name">Pizza Parma</span>
                         <span class="item-price">19€</span>
@@ -138,14 +141,14 @@
                 </div>
                 <div class="menu-item">
                     <div class="item-header">
-                        <span class="item-name">Tiramisu Pistache</span>
-                        <span class="item-price">12€</span>
-                    </div>
-                </div>
-                <div class="menu-item">
-                    <div class="item-header">
                         <span class="item-name">Panna Cotta</span>
                         <span class="item-price">10€</span>
+                    </div>
+                </div>
+                 <div class="menu-item">
+                    <div class="item-header">
+                        <span class="item-name">Tiramisu Pistache</span>
+                        <span class="item-price">12€</span>
                     </div>
                 </div>
                  <div class="menu-item">
@@ -165,10 +168,17 @@
 
     <footer>
         <div class="container">
-            <img src="Colisée-56-logo-blanc.png" alt="Logo" class="footer-logo-filter">
             <p>&copy; 2024 Colisée 56.</p>
         </div>
     </footer>
 
+    <script>
+        const toggleBtn = document.querySelector('.mobile-toggle');
+        const navLinks = document.querySelector('.nav-links');
+        toggleBtn.addEventListener('click', () => {
+            navLinks.classList.toggle('nav-active');
+            toggleBtn.textContent = navLinks.classList.contains('nav-active') ? '✕' : '☰';
+        });
+    </script>
 </body>
 </html>
