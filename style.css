@@ -1,194 +1,169 @@
 /* =========================================
-   1. RESET & VARIABLES
+   1. CORE & VARIABLES (L'ADN du site)
    ========================================= */
 :root {
-    /* Palette de Couleurs */
-    --color-bg: #0A0A0A;          
-    --color-bg-alt: #121212;      
-    --color-primary: #D4AF37;     /* Or/Doré Impérial */
-    --color-primary-dim: #b5942f; /* Or plus sombre pour les bordures */
-    --color-text: #F5F5F0;        
-    --color-text-muted: #A0A0A0;  
+    /* Couleurs */
+    --bg-dark: #080808;           /* Noir quasi absolu */
+    --bg-card: #121212;           /* Gris très sombre pour les cartes */
+    --bg-overlay: rgba(0,0,0,0.85);
+    
+    --text-main: #FFFFFF;         /* Blanc pur (Logo) */
+    --text-muted: #B0B0B0;        /* Gris argenté pour descriptions */
+    
+    --accent-gold: #D4AF37;       /* Or Classique */
+    --accent-gold-dim: #8a7020;   /* Or sombre pour bordures subtiles */
     
     /* Typographie */
-    --font-heading: 'Playfair Display', serif;
+    --font-title: 'Playfair Display', serif;
     --font-body: 'Lato', sans-serif;
     
-    /* Spacing & Layout */
-    --container-width: 1200px;
-    --header-height: 90px;
+    /* Dimensions */
+    --header-h: 90px;
+    --container: 1200px;
 }
 
-*, *::before, *::after {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+/* Reset Haute Performance */
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
 html {
-    scroll-behavior: smooth;
     font-size: 16px;
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased; /* Rendu texte net sur Mac */
 }
 
 body {
-    background-color: var(--color-bg);
-    color: var(--color-text);
+    background-color: var(--bg-dark);
+    color: var(--text-main);
     font-family: var(--font-body);
     line-height: 1.7;
-    overflow-x: hidden;
+    overflow-x: hidden; /* Évite le scroll horizontal accidentel */
 }
 
 /* =========================================
-   2. TYPOGRAPHIE & DÉTAILS
+   2. TYPOGRAPHIE DE LUXE
    ========================================= */
-h1, h2, h3, h4 {
-    font-family: var(--font-heading);
-    color: var(--color-primary);
+h1, h2, h3 {
+    font-family: var(--font-title);
     font-weight: 400;
+    color: var(--text-main);
 }
 
 h1 {
-    font-size: clamp(3rem, 6vw, 5rem);
+    font-size: clamp(3rem, 6vw, 5.5rem); /* Taille adaptative */
     line-height: 1.1;
-    margin-bottom: 1.5rem;
-    text-shadow: 0 4px 10px rgba(0,0,0,0.5);
+    letter-spacing: -1px;
+    margin-bottom: 2rem;
+    text-shadow: 0 10px 30px rgba(0,0,0,0.5);
 }
 
 h2 {
     font-size: 2.5rem;
-    margin-bottom: 3rem;
     text-align: center;
+    margin-bottom: 4rem;
     position: relative;
     padding-bottom: 1.5rem;
     text-transform: uppercase;
     letter-spacing: 4px;
-    color: #fff;
+    color: var(--accent-gold);
 }
 
-/* Ligne décorative sophistiquée sous les titres */
+/* La ligne dorée sous les titres */
 h2::after {
     content: '';
     position: absolute;
     bottom: 0;
     left: 50%;
     transform: translateX(-50%);
-    width: 60px;
-    height: 2px;
-    background: linear-gradient(90deg, transparent, var(--color-primary), transparent);
+    width: 80px;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--accent-gold), transparent);
+}
+
+h3 {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+    letter-spacing: 1px;
 }
 
 p {
-    margin-bottom: 1.5rem;
-    color: var(--color-text-muted);
+    color: var(--text-muted);
     font-weight: 300;
+    margin-bottom: 1.5rem;
 }
 
-a {
-    text-decoration: none;
-    color: inherit;
-    transition: all 0.3s ease;
+a { 
+    text-decoration: none; 
+    color: inherit; 
+    transition: 0.3s ease; 
 }
 
 /* =========================================
-   3. UI COMPONENTS (Boutons, Cards)
+   3. ÉLÉMENTS D'INTERFACE (Boutons)
    ========================================= */
 .btn {
     display: inline-block;
-    padding: 16px 36px;
-    border: 1px solid var(--color-primary);
-    color: var(--color-primary);
+    padding: 15px 40px;
+    border: 1px solid var(--accent-gold);
+    color: var(--accent-gold);
     text-transform: uppercase;
     font-size: 0.8rem;
     letter-spacing: 3px;
-    cursor: pointer;
-    background: transparent;
-    transition: all 0.4s ease;
-    text-align: center;
     position: relative;
     overflow: hidden;
-    z-index: 1;
+    transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+    background: transparent;
+    cursor: pointer;
 }
 
 .btn::before {
     content: '';
     position: absolute;
-    top: 0;
-    left: 0;
-    width: 0%;
-    height: 100%;
-    background-color: var(--color-primary);
+    top: 0; left: 0; width: 0%; height: 100%;
+    background: var(--accent-gold);
     z-index: -1;
-    transition: width 0.4s cubic-bezier(0.19, 1, 0.22, 1);
+    transition: width 0.5s cubic-bezier(0.23, 1, 0.32, 1);
 }
 
 .btn:hover {
-    color: #000;
+    color: var(--bg-dark);
+    padding-left: 50px; /* Petit effet de mouvement du texte */
+    padding-right: 30px;
 }
 
-.btn:hover::before {
-    width: 100%;
-}
-
-.btn-pulse {
-    animation: goldPulse 3s infinite;
-}
-
-@keyframes goldPulse {
-    0% { box-shadow: 0 0 0 0 rgba(212, 175, 55, 0.4); }
-    70% { box-shadow: 0 0 0 10px rgba(212, 175, 55, 0); }
-    100% { box-shadow: 0 0 0 0 rgba(212, 175, 55, 0); }
-}
-
-.container {
-    max-width: var(--container-width);
-    margin: 0 auto;
-    padding: 0 20px;
-}
-
-.section {
-    padding: 120px 0;
-    position: relative;
-}
-
-/* Fond subtil pour donner de la texture */
-.section-dark {
-    background-color: var(--color-bg-alt);
-    background-image: radial-gradient(circle at top right, rgba(20,20,20,1) 0%, rgba(10,10,10,1) 100%);
-}
+.btn:hover::before { width: 100%; }
 
 /* =========================================
-   4. HEADER & NAVIGATION
+   4. HEADER & NAVIGATION (Glassmorphism)
    ========================================= */
 header {
     position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: var(--header-height);
-    background: rgba(10, 10, 10, 0.85); /* Plus transparent pour l'immersion */
+    top: 0; left: 0; width: 100%;
+    height: var(--header-h);
+    z-index: 1000;
+    background: rgba(8, 8, 8, 0.8);
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
-    z-index: 1000;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-    transition: all 0.3s ease;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
 }
 
 .nav-container {
+    max-width: var(--container);
+    margin: 0 auto;
+    padding: 0 20px;
+    height: 100%;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    height: 100%;
 }
 
 .logo img {
-    height: 55px; /* Logo un peu plus grand */
+    height: 50px; /* Taille ajustée pour le logo blanc */
     width: auto;
+    display: block;
     transition: transform 0.3s;
 }
 
-.logo:hover img {
-    transform: scale(1.05);
-}
+.logo:hover img { transform: scale(1.05); }
 
 .nav-links {
     display: flex;
@@ -202,321 +177,230 @@ header {
     text-transform: uppercase;
     letter-spacing: 2px;
     position: relative;
-    padding-bottom: 5px;
-    color: #fff;
-    font-weight: 400;
+    color: var(--text-main);
+    opacity: 0.8;
 }
 
-.nav-links a::after {
-    content: '';
-    position: absolute;
-    bottom: -2px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 0;
-    height: 1px;
-    background-color: var(--color-primary);
-    transition: width 0.3s ease;
+.nav-links a:hover, .nav-links a.active {
+    opacity: 1;
+    color: var(--accent-gold);
 }
 
-.nav-links a:hover::after,
-.nav-links a.active::after {
-    width: 100%;
-}
-
-.mobile-toggle {
-    display: none;
-    font-size: 1.5rem;
-    cursor: pointer;
-    color: var(--color-primary);
-    z-index: 1002;
-}
-
-#mobile-menu-check {
-    display: none;
-}
+/* Burger Menu (Hidden Desktop) */
+.mobile-toggle { display: none; cursor: pointer; color: var(--text-main); font-size: 1.5rem; }
+#mobile-check { display: none; }
 
 /* =========================================
-   5. HERO SECTION (RESTAURÉE)
+   5. SECTIONS & GRIDS
+   ========================================= */
+.section {
+    padding: 120px 0;
+    position: relative;
+}
+
+.section-dark {
+    background-color: var(--bg-card);
+    border-top: 1px solid rgba(255,255,255,0.03);
+    border-bottom: 1px solid rgba(255,255,255,0.03);
+}
+
+.container {
+    max-width: var(--container);
+    margin: 0 auto;
+    padding: 0 25px;
+}
+
+.grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
+.grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2.5rem; }
+
+/* =========================================
+   6. HERO SECTION (Parallaxe)
    ========================================= */
 .hero {
     height: 100vh;
-    width: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
     text-align: center;
-    /* Image de fond restaurée avec overlay sombre */
-    background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1559339352-11d035aa65de?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80');
+    background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80');
     background-size: cover;
     background-position: center;
-    background-attachment: fixed; /* Effet Parallaxe sur Desktop */
-    padding-top: var(--header-height);
-    position: relative;
+    background-attachment: fixed; /* L'effet de profondeur */
+    padding-top: var(--header-h);
 }
 
 .hero-content {
-    max-width: 900px;
-    padding: 3rem;
-    /* Effet verre dépoli autour du texte hero */
-    background: rgba(255, 255, 255, 0.03);
-    backdrop-filter: blur(2px);
-    border: 1px solid rgba(255, 255, 255, 0.05);
-    border-radius: 4px;
-}
-
-.hero-subtitle {
-    font-family: var(--font-heading);
-    font-style: italic;
-    font-size: 1.5rem;
-    margin-bottom: 2.5rem;
-    color: #eee;
-    font-weight: 400;
-    letter-spacing: 1px;
+    max-width: 800px;
+    animation: fadeUp 1.2s cubic-bezier(0.23, 1, 0.32, 1) forwards;
 }
 
 /* =========================================
-   6. MENU & LIST STYLES (Clean & Elegant)
+   7. LE MENU (Design épuré)
    ========================================= */
-.menu-category-title {
+.menu-cat-title {
     font-size: 2rem;
+    color: var(--accent-gold);
     text-align: center;
-    margin-bottom: 4rem;
-    color: var(--color-primary);
-    font-family: var(--font-heading);
-    letter-spacing: 2px;
+    margin: 4rem 0 3rem;
+    font-family: var(--font-title);
     font-style: italic;
 }
 
 .menu-grid {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    column-gap: 5rem;
-    row-gap: 2.5rem;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem 5rem; /* Gap Vertical / Horizontal */
 }
 
 .menu-item {
-    margin-bottom: 1.5rem;
-    position: relative;
+    margin-bottom: 1rem;
     transition: transform 0.3s ease;
 }
 
-.menu-item:hover {
-    transform: translateX(5px);
-}
+.menu-item:hover { transform: translateX(5px); }
 
-.menu-header {
+.item-header {
     display: flex;
     justify-content: space-between;
     align-items: baseline;
-    margin-bottom: 0.5rem;
     position: relative;
+    overflow: hidden;
 }
 
-/* Pointillés élégants */
-.menu-header::before {
-    content: '';
+.item-header::after {
+    content: ".......................................................................";
     position: absolute;
-    bottom: 6px;
-    left: 0;
-    width: 100%;
-    height: 0;
-    border-bottom: 1px dotted rgba(255, 255, 255, 0.2);
+    bottom: 5px; left: 0; width: 100%;
+    color: rgba(255,255,255,0.1);
     z-index: 0;
+    letter-spacing: 2px;
 }
 
-.dish-name {
-    font-family: var(--font-heading);
-    font-size: 1.15rem;
-    color: var(--color-text);
-    background-color: var(--color-bg-alt); 
+.item-name {
+    font-family: var(--font-title);
+    font-size: 1.2rem;
+    background: var(--bg-dark); /* Cache les points derrière le nom */
     padding-right: 15px;
     z-index: 1;
-    position: relative;
-    letter-spacing: 0.5px;
+    color: var(--text-main);
 }
+.section-dark .item-name { background: var(--bg-card); } /* Adaptation fond */
 
-.section:not(.section-dark) .dish-name {
-    background-color: var(--color-bg);
-}
-
-.dish-price {
+.item-price {
     font-family: var(--font-body);
-    font-size: 1.1rem;
-    color: var(--color-primary);
-    background-color: var(--color-bg-alt);
+    font-weight: 700;
+    color: var(--accent-gold);
+    background: var(--bg-dark);
     padding-left: 15px;
     z-index: 1;
-    position: relative;
-    font-weight: 700;
 }
+.section-dark .item-price { background: var(--bg-card); }
 
-.section:not(.section-dark) .dish-price {
-    background-color: var(--color-bg);
-}
-
-.dish-desc {
+.item-desc {
     font-size: 0.9rem;
-    color: var(--color-text-muted);
     font-style: italic;
-    line-height: 1.5;
-    max-width: 95%;
+    margin-top: 0.4rem;
+    color: var(--text-muted);
 }
 
 /* =========================================
-   7. CARDS (Specialties, etc)
+   8. CARDS (Service, Signatures)
    ========================================= */
-.grid-3 {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 2.5rem;
-}
-
 .card {
-    background: linear-gradient(145deg, #151515, #0f0f0f);
-    padding: 3.5rem 2rem;
+    background: linear-gradient(145deg, #151515, #0a0a0a);
+    padding: 3rem 2rem;
     border: 1px solid rgba(255,255,255,0.03);
-    transition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
     text-align: center;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    transition: all 0.4s ease;
 }
 
 .card:hover {
-    border-color: rgba(212, 175, 55, 0.3);
+    border-color: var(--accent-gold-dim);
     transform: translateY(-10px);
-    box-shadow: 0 20px 40px rgba(0,0,0,0.4);
-}
-
-.card h3 {
-    margin-bottom: 1rem;
-    font-size: 1.4rem;
-    color: #fff;
-}
-
-/* Info Box spécifique accueil */
-.info-box {
-    margin-bottom: 1rem;
-}
-.info-box h3 {
-    font-size: 1.2rem;
-    color: var(--color-primary);
-    margin-bottom: 0.5rem;
-    letter-spacing: 1px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.5);
 }
 
 /* =========================================
-   8. FORMS & INPUTS
+   9. FORMULAIRES
    ========================================= */
-.form-group {
-    margin-bottom: 2rem;
-}
+.form-group { margin-bottom: 2rem; position: relative; }
 
-.form-control {
+.form-input {
     width: 100%;
     padding: 15px 0;
     background: transparent;
     border: none;
     border-bottom: 1px solid rgba(255,255,255,0.2);
-    color: #fff;
+    color: var(--text-main);
     font-family: var(--font-body);
     font-size: 1.1rem;
-    transition: border-color 0.3s ease, padding 0.3s ease;
+    transition: 0.3s;
     border-radius: 0;
 }
 
-.form-control:focus {
+.form-input:focus {
     outline: none;
-    border-bottom-color: var(--color-primary);
-    padding-bottom: 10px; /* Petit effet au focus */
+    border-bottom-color: var(--accent-gold);
+    padding-bottom: 10px;
 }
 
 /* =========================================
-   9. FOOTER
+   10. FOOTER
    ========================================= */
 footer {
-    background-color: #050505;
-    border-top: 1px solid rgba(212, 175, 55, 0.15);
+    background: #000;
     padding: 5rem 0 2rem;
+    border-top: 1px solid rgba(212, 175, 55, 0.2);
+    text-align: center;
 }
-
-.footer-content h4 {
-    color: var(--color-primary);
-    margin-bottom: 1.5rem;
-    font-size: 1.1rem;
-    letter-spacing: 2px;
-    text-transform: uppercase;
+.footer-links {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin: 2rem 0;
 }
 
 /* =========================================
-   10. ANIMATIONS
+   11. ANIMATIONS & RESPONSIVE MOBILE
    ========================================= */
-.fade-in { opacity: 0; animation: fadeIn 1.2s ease forwards; }
-.slide-up { opacity: 0; transform: translateY(40px); animation: slideUp 1s ease forwards; }
-.delay-1 { animation-delay: 0.2s; }
-.delay-2 { animation-delay: 0.4s; }
-.delay-3 { animation-delay: 0.6s; }
+@keyframes fadeUp {
+    from { opacity: 0; transform: translateY(40px); }
+    to { opacity: 1; transform: translateY(0); }
+}
 
-@keyframes fadeIn { to { opacity: 1; } }
-@keyframes slideUp { to { opacity: 1; transform: translateY(0); } }
-
-/* =========================================
-   11. RESPONSIVE MOBILE OPTIMIZATION
-   ========================================= */
 @media (max-width: 1024px) {
     .menu-grid { grid-template-columns: 1fr; gap: 3rem; }
-    .hero { background-attachment: scroll; /* Meilleure perf sur tablette */ }
+    .hero { background-attachment: scroll; } /* Perf Mobile */
 }
 
 @media (max-width: 768px) {
-    :root { --header-height: 70px; }
+    :root { --header-h: 70px; }
     
     .section { padding: 80px 0; }
     
-    /* Typography Adjustments */
-    h1 { font-size: 2.4rem; margin-bottom: 1rem; }
-    h2 { font-size: 1.8rem; margin-bottom: 2.5rem; letter-spacing: 2px; }
-    
-    .hero-content {
-        padding: 2rem 1.5rem;
-        margin: 0 15px;
-        background: rgba(10, 10, 10, 0.7); /* Plus sombre pour lisibilité mobile */
-    }
-
-    /* Mobile Navigation (Full Screen Overlay) */
-    .mobile-toggle { display: block; position: fixed; right: 20px; top: 22px; }
+    .mobile-toggle { display: block; z-index: 1002; position: relative; }
     
     .nav-links {
         position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100vh;
-        background-color: #000; /* Noir pur */
+        top: 0; left: 0; width: 100%; height: 100vh;
+        background: #000;
         flex-direction: column;
         justify-content: center;
-        align-items: center;
         gap: 2.5rem;
         transform: translateY(-100%);
-        transition: transform 0.6s cubic-bezier(0.7, 0, 0.3, 1);
+        transition: transform 0.6s cubic-bezier(0.85, 0, 0.15, 1);
         z-index: 1001;
     }
     
-    .nav-links a {
-        font-size: 1.5rem; /* Plus gros pour le touch */
-        letter-spacing: 3px;
-    }
+    #mobile-check:checked ~ .nav-links { transform: translateY(0); }
     
-    #mobile-menu-check:checked ~ .nav-links {
-        transform: translateY(0);
-    }
+    .nav-links a { font-size: 1.5rem; }
     
-    /* Grid Stacking */
-    .grid-3 { grid-template-columns: 1fr; gap: 2rem; }
+    h1 { font-size: 2.8rem; }
     
-    /* Buttons */
-    .btn { width: 100%; display: block; margin-bottom: 15px; margin-left: 0 !important; }
+    .grid-2, .grid-3 { grid-template-columns: 1fr; }
     
-    /* Footer */
-    .footer-content { flex-direction: column; text-align: center; gap: 3rem; }
-    .footer-col { width: 100%; }
+    /* Bouton Mobile : Full width */
+    .btn { width: 100%; display: block; }
 }
