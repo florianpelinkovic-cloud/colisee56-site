@@ -4,9 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Réservation | COLISÉE 56</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -22,10 +20,10 @@
             <nav>
                 <ul class="nav-links">
                     <li><a href="index.html">Accueil</a></li>
-                    <li><a href="menu.html">Menu</a></li>
-                    <li><a href="about.html">À Propos</a></li>
-                    <li><a href="contact.html">Contact</a></li>
-                    <li><a href="reservation.html" class="active btn">Réserver</a></li>
+                    <li><a href="menu.html">La Carte</a></li>
+                    <li><a href="about.html">Le Restaurant</a></li>
+                    <li><a href="contact.html">Infos</a></li>
+                    <li><a href="reservation.html" class="active btn" style="margin:0;">Réserver</a></li>
                 </ul>
             </nav>
         </div>
@@ -36,34 +34,36 @@
             <div class="grid-2">
                 <div class="slide-up">
                     <h2>Réservez Votre Table</h2>
-                    <p>Pour le déjeuner ou le dîner, assurez-vous de vivre l'expérience Colisée 56. Pour les groupes de plus de 8 personnes, veuillez nous contacter directement.</p>
-                    <div style="margin-top: 2rem; border-left: 2px solid var(--color-primary); padding-left: 1rem;">
-                        <p><strong>Horaires d'ouverture :</strong></p>
-                        <p>Déjeuner : 11h00 - 14h00</p>
-                        <p>Dîner : 18h30 - 23h00</p>
+                    <p>Pour le déjeuner ou le dîner, assurez-vous de vivre l'expérience Colisée 56.</p>
+                    <div style="margin-top: 2rem; border-left: 1px solid var(--color-primary); padding-left: 1rem;">
+                        <p style="color: var(--color-primary); text-transform:uppercase; letter-spacing:1px;">Horaires d'ouverture</p>
+                        <p>Déjeuner : 12h00 - 14h45</p>
+                        <p>Dîner : 18h30 - 22h45</p>
                     </div>
                 </div>
 
-                <div class="card fade-in delay-1" style="background: rgba(20,20,20,0.9);">
+                <div class="card fade-in delay-1" style="text-align: left;">
                     <form action="#" method="POST">
                         <div class="form-group">
-                            <input type="text" class="form-control" placeholder="Votre Nom Complet" required>
+                            <label style="font-size: 0.8rem; color: var(--color-text-muted);">Vos Coordonnées</label>
+                            <input type="text" class="form-control" placeholder="Nom Complet" required>
                         </div>
                         <div class="form-group">
-                            <input type="email" class="form-control" placeholder="Votre Email" required>
+                            <input type="email" class="form-control" placeholder="Email" required>
                         </div>
                         <div class="form-group">
-                            <input type="tel" class="form-control" placeholder="Numéro de Téléphone" required>
+                            <input type="tel" class="form-control" placeholder="Téléphone" required>
                         </div>
-                        <div class="grid-2" style="gap: 1rem;">
-                            <div class="form-group">
+                        <div class="grid-2" style="gap: 1rem; margin-bottom: 1.5rem;">
+                            <div>
+                                <label style="font-size: 0.8rem; color: var(--color-text-muted);">Date</label>
                                 <input type="date" class="form-control" required>
                             </div>
-                            <div class="form-group">
-                                <select class="form-control" required>
-                                    <option value="" disabled selected>Heure</option>
+                            <div>
+                                <label style="font-size: 0.8rem; color: var(--color-text-muted);">Heure</label>
+                                <select class="form-control" required style="background: var(--color-bg-alt);">
+                                    <option value="" disabled selected>Choisir...</option>
                                     <optgroup label="Déjeuner">
-                                        <option value="11:30">11:30</option>
                                         <option value="12:00">12:00</option>
                                         <option value="12:30">12:30</option>
                                         <option value="13:00">13:00</option>
@@ -79,12 +79,10 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <input type="number" class="form-control" placeholder="Nombre de couverts" min="1" max="8" required>
+                             <label style="font-size: 0.8rem; color: var(--color-text-muted);">Couverts</label>
+                            <input type="number" class="form-control" placeholder="Nombre de personnes" min="1" max="10" required>
                         </div>
-                        <div class="form-group">
-                            <textarea class="form-control" rows="3" placeholder="Message spécial / Allergies"></textarea>
-                        </div>
-                        <button type="submit" class="btn btn-pulse" style="width: 100%;">Confirmer la Réservation</button>
+                        <button type="submit" class="btn btn-pulse" style="width: 100%;">Confirmer</button>
                     </form>
                 </div>
             </div>
